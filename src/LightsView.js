@@ -9,6 +9,9 @@ class LightsView extends Component {
       this.data = null;
 
       this.onToggleLight = this.onToggleLight.bind(this);
+      this.getUrlWithUsername = this.getUrlWithUsername.bind(this);
+      this.fetchData = this.fetchData.bind(this);
+      setInterval(this.fetchData,5000);
    }
 
    componentWillMount() {

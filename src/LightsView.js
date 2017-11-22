@@ -7,11 +7,8 @@ class LightsView extends Component {
       super(props);
       this.requestFailed = false;
       this.data = null;
-      this.state = {
-         newData : false
-      }
 
-      this.onClick = this.onClick.bind(this);
+      this.onToggleLight = this.onToggleLight.bind(this);
    }
 
    componentWillMount() {
@@ -65,7 +62,7 @@ class LightsView extends Component {
       })
    }
 
-   onClick(id, isOn) {
+   onToggleLight(id, isOn) {
       this.changeState(id, !isOn);
    }
 
@@ -81,20 +78,16 @@ class LightsView extends Component {
 
       let data = this.data;
       let lightItems = [];
-      let clickHandler = this.onClick;
+      let clickHandler = this.onToggleLight;
       Object.keys(data).forEach(function(id,index) {
          let item = data[id];
          let light = <LightItem key={id} id={id} name={data[id].name} 
-         isOn={item.state.on} onClick={clickHandler}/>
+         isOn={item.state.on} onToggleLight={clickHandler}/>
          lightItems.push(light);
       });
       return (
-         <div>
-            <table align="center">
-            <tbody>
+         <div align="center" style={{maxWidth:250,margin: '20px auto 0'}}>
             {lightItems}
-            </tbody>
-            </table>
          </div>
       );
    }

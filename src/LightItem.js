@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Light extends Component {
+class LightItem extends Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
@@ -17,14 +17,14 @@ class Light extends Component {
         }
 
         return (
-            <div>
-            <div>{this.props.name} {this.props.state}</div>
-            <div>{imgNode}</div>
-            </div>
+            <tr>
+            <td>{this.props.name}</td>
+            <td>{imgNode}</td>
+            </tr>
         );
         
 
     }
 }
 
-export default Light;
+export default LightItem;

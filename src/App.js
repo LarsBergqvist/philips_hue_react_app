@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Lights from './Lights';
+import LightsView from './LightsView';
 
 class App extends Component {
-  render() {
-    return (
+render() {
+   return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">A Philips Hue React app</h1>
+         <header className="App-header">
+            <h1 className="App-title">A Philips Hue React app</h1>
         </header>
-        <Lights />
+        <LightsView />
       </div>
     );
   }

@@ -7,12 +7,12 @@ class LightItem extends Component {
     }
 
     onClick() {
-        this.props.onClick(this.props.id,this.props.state);
+        this.props.onClick(this.props.id,this.props.isOn);
     }
 
     render() {
         let imgNode = <img src={require('./off_button.gif')} onClick={this.onClick}/>
-        if (this.props.state === 'on') {
+        if (this.props.isOn) {
             imgNode =<img src={require('./on_button.gif')} onClick={this.onClick}/>;
         }
 

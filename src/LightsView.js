@@ -19,7 +19,7 @@ class LightsView extends Component {
    }
 
    getUrlWithUsername() {
-      return Config.apiUrl + "/api/" + Config.username + "/lights";
+      return Config.apiUrl + '/api/' + Config.username + '/lights';
    }
    fetchData() {
       let url = this.getUrlWithUsername();
@@ -27,7 +27,7 @@ class LightsView extends Component {
       fetch(url)
          .then(response => {
             if (!response.ok) {
-              throw Error("Network request failed")
+              throw Error('Network request failed');
             }    
             return response;
          })
@@ -42,17 +42,16 @@ class LightsView extends Component {
          })
       }
 
-   changeState(id,state) {
-      let on = false;
-      if (state === 'on') {
-         on = true;
-      }
+   changeState(id,on) {
       let bodyData = '{"on":' + on + '}';
-      fetch('http://192.168.1.232/api/5UeqXqaPUu-0O0oB22vLFRu5Xc680wInaIVvNo2M/lights/' + id + '/state',
+
+      let url = this.getUrlWithUsername() + '/' + id + '/state';
+      
+      fetch(url,
             { method: 'PUT', body: bodyData })
          .then(response => {
             if (!response.ok) {
-            throw Error("Network request failed")
+            throw Error('Network request failed');
          }
    
          return response;
@@ -66,13 +65,8 @@ class LightsView extends Component {
       })
    }
 
-   onClick(id, currentState) {
-      let newState = 'on' 
-      if (currentState === 'on') {
-         newState = 'off';
-      } 
-
-      this.changeState(id,newState);
+   onClick(id, isOn) {
+      this.changeState(id, !isOn);
    }
 
    render() {
@@ -85,29 +79,24 @@ class LightsView extends Component {
          return <p>Loading...</p>
       }
 
-      console.log(this.data["1"]);
       let data = this.data;
       let lightItems = [];
       let clickHandler = this.onClick;
       Object.keys(data).forEach(function(id,index) {
          let item = data[id];
-         let state = 'off';
-         if (item.state.on === true) {
-            state = 'on';
-         }
-            let light = <LightItem key={id} id={id} name={data[id].name} 
-            state={state} onClick={clickHandler}/>
-            lightItems.push(light);
-         });
-         return (
-            <div>
-               <table align="center">
-               <tbody>
-               {lightItems}
-               </tbody>
-               </table>
-            </div>
-         );
+         let light = <LightItem key={id} id={id} name={data[id].name} 
+         isOn={item.state.on} onClick={clickHandler}/>
+         lightItems.push(light);
+      });
+      return (
+         <div>
+            <table align="center">
+            <tbody>
+            {lightItems}
+            </tbody>
+            </table>
+         </div>
+      );
    }
 }
 

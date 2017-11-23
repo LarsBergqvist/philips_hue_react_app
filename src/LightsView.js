@@ -9,8 +9,8 @@ class LightsView extends Component {
       this.data = null;
 
       this.onToggleLight = this.onToggleLight.bind(this);
-      this.getUrlWithUsername = this.getUrlWithUsername.bind(this);
       this.fetchData = this.fetchData.bind(this);
+      this.onBrightnessChanged = this.onBrightnessChanged.bind(this);
       setInterval(this.fetchData,5000);
    }
 
@@ -42,9 +42,7 @@ class LightsView extends Component {
          })
       }
 
-   changeState(id,on) {
-      let bodyData = '{"on":' + on + '}';
-
+   changeState(id, bodyData) {
       let url = this.getUrlWithUsername() + '/' + id + '/state';
       
       fetch(url,
@@ -66,7 +64,13 @@ class LightsView extends Component {
    }
 
    onToggleLight(id, isOn) {
-      this.changeState(id, !isOn);
+      let bodyData = '{"on":' + !isOn + '}';
+      this.changeState(id, bodyData);
+   }
+
+   onBrightnessChanged(id, newValue) {
+      let bodyData = '{"bri":' + newValue + '}';
+      this.changeState(id, bodyData);
    }
 
    render() {
@@ -81,15 +85,17 @@ class LightsView extends Component {
 
       let data = this.data;
       let lightItems = [];
-      let clickHandler = this.onToggleLight;
+      let toggleHandler = this.onToggleLight;
+      let brightnessHandler = this.onBrightnessChanged;
       Object.keys(data).forEach(function(id,index) {
          let item = data[id];
          let light = <LightItem key={id} id={id} name={data[id].name} 
-         isOn={item.state.on} onToggleLight={clickHandler}/>
+         isOn={item.state.on} bri={item.state.bri} onToggleLight={toggleHandler}
+         onBrightnessChanged={brightnessHandler}/>
          lightItems.push(light);
       });
       return (
-         <div align="center" style={{maxWidth:250,margin: '20px auto 0'}}>
+         <div align="center" style={{maxWidth:950,margin: '20px auto 0'}}>
             {lightItems}
          </div>
       );

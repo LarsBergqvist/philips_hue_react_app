@@ -22,7 +22,25 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.cells {
+   display: inline-block;
+   border-color: #aacccc;
+   border-width: thin;
+   border-style: solid;
+   
+}
+
+.cell {
+   display: inline-block;
+   vertical-align :"middle";
+   margin-left:10px;
+   margin-right:10px;
+}
+
+.slider {
+   width: 200px;
+}
+
+.toggle {
+   width: 200px;
 }

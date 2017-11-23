@@ -21,6 +21,7 @@ class LightsView extends Component {
    getUrlWithUsername() {
       return Config.apiUrl + '/api/' + Config.username + '/lights';
    }
+
    fetchData() {
       let url = this.getUrlWithUsername();
 
@@ -76,11 +77,15 @@ class LightsView extends Component {
    render() {
       if (this.requestFailed) {
          let url = this.getUrlWithUsername();
-         return <p>Could not fetch from {url}</p>
+         return <p className="warning">Could not fetch from {url}</p>
       }
 
       if (!this.data) {
          return <p>Loading...</p>
+      }
+
+      if (this.data[0] !== undefined) {
+         return <p className="warning">{this.data[0].error.description}</p>;
       }
 
       let data = this.data;
@@ -90,8 +95,10 @@ class LightsView extends Component {
       Object.keys(data).forEach(function(id,index) {
          let item = data[id];
          let light = <LightItem key={id} id={id} name={data[id].name} 
-         isOn={item.state.on} bri={item.state.bri} reachable={item.state.reachable} onToggleLight={toggleHandler}
-         onBrightnessChanged={brightnessHandler}/>
+                        isOn={item.state.on} bri={item.state.bri} 
+                        reachable={item.state.reachable} 
+                        onToggleLight={toggleHandler}
+                        onBrightnessChanged={brightnessHandler}/>
          lightItems.push(light);
       });
       return (

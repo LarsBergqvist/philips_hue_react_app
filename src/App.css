@@ -48,7 +48,7 @@
    width: 200px;
 }
 
-.not_reachable_warning {
+.warning {
    color:red;
    font-style: italic;
 }

@@ -22,25 +22,33 @@
   font-size: large;
 }
 
-.cells {
+.items {
    display: inline-block;
    border-color: #aacccc;
    border-width: thin;
-   border-style: solid;
-   
+   border-style: none;
+   margin-bottom: 50px;      
 }
 
-.cell {
+.item {
    display: inline-block;
-   vertical-align :"middle";
-   margin-left:10px;
-   margin-right:10px;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   height:20px;
 }
 
 .slider {
    width: 200px;
+   display: block;
 }
 
 .toggle {
    width: 200px;
+}
+
+.not_reachable_warning {
+   color:red;
+   font-style: italic;
 }

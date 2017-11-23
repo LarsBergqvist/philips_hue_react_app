@@ -3,14 +3,18 @@ import Toggle from 'material-ui/Toggle';
 import Slider from 'material-ui/Slider';
 
 const LightItem = (props) => (
-      <div className="cells">
-         <div className="cell toggle">
-         <Toggle toggled={props.isOn} label={props.name} 
+      <div className="items">
+         <div className="item toggle">
+         <Toggle
+            toggled={props.isOn} label={props.name} 
             onToggle={() => props.onToggleLight(props.id,props.isOn)}
+            disabled={!props.reachable}
          />
+         {props.reachable ? "" : <div className="not_reachable_warning">not reachable</div>}
          </div>
-         <div className="cell slider">
+         <div className="item slider">
          <Slider
+            disabled={!props.reachable}
             min={0}
             max={255}
             step={1}

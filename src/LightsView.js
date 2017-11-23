@@ -90,7 +90,7 @@ class LightsView extends Component {
       Object.keys(data).forEach(function(id,index) {
          let item = data[id];
          let light = <LightItem key={id} id={id} name={data[id].name} 
-         isOn={item.state.on} bri={item.state.bri} onToggleLight={toggleHandler}
+         isOn={item.state.on} bri={item.state.bri} reachable={item.state.reachable} onToggleLight={toggleHandler}
          onBrightnessChanged={brightnessHandler}/>
          lightItems.push(light);
       });

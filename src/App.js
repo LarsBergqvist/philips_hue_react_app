@@ -4,15 +4,15 @@ import LightsView from './LightsView';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
-render() {
-   return (
+  render() {
+    return (
       <MuiThemeProvider>
-      <div className="App">
-         <header className="App-header">
+        <div className="App">
+          <header className="App-header">
             <h1 className="App-title">A Philips Hue React app</h1>
-        </header>
-        <LightsView />
-      </div>
+          </header>
+          <LightsView />
+        </div>
       </MuiThemeProvider>
     );
   }

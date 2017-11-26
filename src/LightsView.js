@@ -79,7 +79,7 @@ class LightsView extends Component {
     }
 
     if (!this.data) {
-      return <p>Loading...</p>
+      return <p>Loading...</p>;
     }
 
     if (this.data[0] !== undefined) {
@@ -108,4 +108,4 @@ class LightsView extends Component {
   }
 }
 
-export default LightsView
+export default LightsView;

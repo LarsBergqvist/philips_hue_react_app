@@ -23,7 +23,7 @@ class LightsView extends Component {
     }
 
     fetchData() {
-        let url = this.getUrlWithUsername();
+        const url = this.getUrlWithUsername();
 
         fetch(url)
             .then(response => {
@@ -44,7 +44,7 @@ class LightsView extends Component {
     }
 
     changeState(id, bodyData) {
-        let url = this.getUrlWithUsername() + '/' + id + '/state';
+        const url = this.getUrlWithUsername() + '/' + id + '/state';
 
         fetch(url, { method: 'PUT', body: bodyData })
             .then(response => {
@@ -63,18 +63,18 @@ class LightsView extends Component {
     }
 
     onToggleLight(id, isOn) {
-        let bodyData = '{"on":' + !isOn + '}';
+        const bodyData = '{"on":' + !isOn + '}';
         this.changeState(id, bodyData);
     }
 
     onBrightnessChanged(id, newValue) {
-        let bodyData = '{"bri":' + newValue + '}';
+        const bodyData = '{"bri":' + newValue + '}';
         this.changeState(id, bodyData);
     }
 
     render() {
         if (this.requestFailed) {
-            let url = this.getUrlWithUsername();
+            const url = this.getUrlWithUsername();
             return <p className='warning'>Could not fetch from {url}</p>
         }
 
@@ -86,13 +86,13 @@ class LightsView extends Component {
             return <p className='warning'>{this.data[0].error.description}</p>;
         }
 
-        let data = this.data;
-        let lightItems = [];
-        let toggleHandler = this.onToggleLight;
-        let brightnessHandler = this.onBrightnessChanged;
+        const data = this.data;
+        const lightItems = [];
+        const toggleHandler = this.onToggleLight;
+        const brightnessHandler = this.onBrightnessChanged;
         Object.keys(data).forEach(function (id, index) {
-            let item = data[id];
-            let light = <LightItem key={id} id={id} name={data[id].name}
+            const item = data[id];
+            const light = <LightItem key={id} id={id} name={data[id].name}
                 isOn={item.state.on} bri={item.state.bri}
                 reachable={item.state.reachable}
                 onToggleLight={toggleHandler}

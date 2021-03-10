@@ -9,7 +9,7 @@
     "material-ui": "^0.20.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

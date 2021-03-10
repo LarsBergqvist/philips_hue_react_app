@@ -1,18 +1,15 @@
 import React from 'react';
 import './App.css';
 import LightsView from './LightsView';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 function App() {
     return (
-        <MuiThemeProvider>
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">A Philips Hue React app</h1>
-                </header>
-                <LightsView />
-            </div>
-        </MuiThemeProvider>
+        <div className="App">
+            <header className="App-header">
+                <h1 className="App-title">A Philips Hue React app</h1>
+            </header>
+            <LightsView />
+        </div>
     );
 }
 

@@ -1,15 +1,24 @@
 import React from 'react';
-import Toggle from 'material-ui/Toggle';
-import Slider from 'material-ui/Slider';
+import Switch from '@material-ui/core/Switch';
+import Slider from '@material-ui/core/Slider';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const LightItem = (props) => (
     <div className='items'>
         <div className='item toggle'>
-            <Toggle
-                toggled={props.isOn}
+
+            <FormControlLabel
+                control={
+                    <Switch
+                        checked={props.isOn}
+                        onChange={() => props.onToggleLight(props.id, props.isOn)}
+                        name={props.name}
+                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        disabled={!props.reachable}
+                        color="primary"
+                    />
+                }
                 label={props.name}
-                onToggle={() => props.onToggleLight(props.id, props.isOn)}
-                disabled={!props.reachable}
             />
             {props.reachable ? '' : <div className='warning'>not reachable</div>}
         </div>

@@ -5,12 +5,19 @@ Usage:<br>
 Get the IP-address of your Philips Hue bridge and fetch a new username token (see https://developers.meethue.com/documentation/getting-started).<br>
 Modify src/config.json with the IP address and the username: 
 It should look somethins like (with example IP and a scramble user name example): <br>
-```json
+
+```yaml
 {
   "apiUrl": "http://192.168.1.17",
   "username": "KEtjVEVUf5LupVexQYPry8xXRddda"
 }
 ```
+
+```
+yarn install
+yarn start
+```
+
 
 Then run install and start: 
 ```

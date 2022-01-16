@@ -1,4 +1,7 @@
 # philips_hue_react_app
+![CI](https://github.com/larsbergqvist/philips_hue_react_app/actions/workflows/ci.yml/badge.svg)
+
+<p>
 This is a simple ReactJS web application that shows how the Philips Hue API can be used for controlling Philips Hue lights.
 <p>
 Usage:<br>
